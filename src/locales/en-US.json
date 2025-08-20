@@ -16,8 +16,8 @@
     "contact": "Contact"
   },
   "meta": {
-    "title": "React TypeScript Template",
-    "description": "Modern React application template with theme switching, multi-language support and best practices"
+    "title": "ts Toolbox",
+    "description": "TypeScript-based utility tools collection with clipboard parsing, data processing and more"
   },
   "home": {
     "welcome": "React + TypeScript Template",
@@ -93,7 +93,7 @@
   },
   "clipboardPage": {
     "title": "Clipboard Content Detector",
-    "pageTitle": "Clipboard Detector",
+    "pageTitle": "Clipboard Detector - ts Toolbox",
     "instructions": {
       "title": "Usage Instructions",
       "step1": "Copy any content to your clipboard (text, HTML, images, etc.)",
@@ -109,7 +109,7 @@
     }
   },
   "homepage": {
-    "title": "Tools Collection",
+    "title": "ts Toolbox",
     "clipboardTool": {
       "title": "Clipboard Detector",
       "description": "Detect text, styles and hidden data in clipboard"
@@ -123,7 +123,7 @@
   "theme": {
     "light": "Light",
     "dark": "Dark",
-    "system": "Follow System", 
+    "system": "Follow System",
     "toggle": "Toggle theme"
   },
   "accessibility": {

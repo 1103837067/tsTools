@@ -16,8 +16,8 @@
     "contact": "联系我们"
   },
   "meta": {
-    "title": "React TypeScript 模板",
-    "description": "现代化的React应用程序模板，集成主题切换、多语言支持和最佳实践"
+    "title": "ts工具箱",
+    "description": "基于TypeScript的实用工具集合，提供剪贴板解析、数据处理等功能"
   },
   "home": {
     "welcome": "React + TypeScript 模板",
@@ -93,7 +93,7 @@
   },
   "clipboardPage": {
     "title": "剪贴板内容检测器",
-    "pageTitle": "剪贴板检测器",
+    "pageTitle": "剪贴板检测器 - ts工具箱",
     "instructions": {
       "title": "使用说明",
       "step1": "复制任何内容到您的剪贴板（文本、HTML、图片等）",
@@ -109,7 +109,7 @@
     }
   },
   "homepage": {
-    "title": "工具集",
+    "title": "ts工具箱",
     "clipboardTool": {
       "title": "剪贴板检测器", 
       "description": "检测剪贴板中的文本、样式和隐藏数据"
@@ -122,7 +122,7 @@
   },
   "theme": {
     "light": "亮色",
-    "dark": "暗色", 
+    "dark": "暗色",
     "system": "跟随系统",
     "toggle": "切换主题"
   },
