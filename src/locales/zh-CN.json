@@ -111,7 +111,7 @@
   "homepage": {
     "title": "ts工具箱",
     "clipboardTool": {
-      "title": "剪贴板检测器", 
+      "title": "剪贴板检测器",
       "description": "检测剪贴板中的文本、样式和隐藏数据"
     }
   },

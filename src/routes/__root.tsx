@@ -1,11 +1,12 @@
 import { Outlet, createRootRoute } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import NotFound from '@/components/common/NotFound';
 import Header from '@/components/layout/Header';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import ScrollToTop from '@/components/ui/ScrollToTop';
+import { useTranslation } from '@/hooks/useTranslation';
 
 /**
  * 根路由组件
@@ -13,6 +14,12 @@ import ScrollToTop from '@/components/ui/ScrollToTop';
  */
 const RootComponent = () => {
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
+
+  // 设置默认页面标题
+  useEffect(() => {
+    document.title = t('meta.title');
+  }, [t]);
 
   return (
     <div className="h-screen flex flex-col ">
