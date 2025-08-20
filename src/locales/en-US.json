@@ -1,0 +1,94 @@
+{
+  "common": {
+    "home": "Home",
+    "language": "Language",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "header": {
+    "backToHome": "Back to Home"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "meta": {
+    "title": "React TypeScript Template",
+    "description": "Modern React application template with theme switching, multi-language support and best practices"
+  },
+  "home": {
+    "welcome": "React + TypeScript Template",
+    "description": "Modern React application template with theme switching, multi-language support and best practices",
+    "githubRepo": "GitHub Repository",
+    "quickStart": "Quick Start",
+    "cloneRepo": "Clone Repository",
+    "installDeps": "Install Dependencies",
+    "startDev": "Start Development",
+    "startBuilding": "Start Building",
+    "editFile": "Edit",
+    "startProject": "to start your project!",
+    "copyright": "© 2024 1103837067 - MIT License",
+    "themeToggle": "Theme Toggle Feature",
+    "currentTheme": "Current theme setting:",
+    "actualTheme": "Actual applied theme:",
+    "lightMode": "Light",
+    "darkMode": "Dark",
+    "systemMode": "Follow System",
+    "lightModeActive": "Light Mode",
+    "darkModeActive": "Dark Mode",
+    "learnReact": "Learn React",
+    "learnTanStack": "Learn TanStack",
+    "learnShadcn": "Learn shadcn/ui",
+    "projectFeatures": "Project Features",
+    "features": {
+      "themeSystem": "Theme System",
+      "themeSystemDesc": "Support for light, dark, and system theme modes",
+      "responsive": "Responsive Design",
+      "responsiveDesc": "Excellent experience on desktop and mobile devices",
+      "modernStack": "Modern Tech Stack",
+      "modernStackDesc": "React 19, TypeScript, TanStack Router",
+      "i18n": "Multi-language Support",
+      "i18nDesc": "Support for Simplified Chinese and English switching"
+    }
+  },
+  "clipboard": {
+    "title": "Clipboard MIME Content Parser",
+    "description": "Parse and display all MIME types from clipboard in raw format at once",
+    "emptyState": {
+      "title": "Click \"Parse Clipboard\" button to get all MIME type content",
+      "subtitle": "First copy the content you want to parse, then click the button below"
+    },
+    "loading": {
+      "title": "Reading clipboard content...",
+      "manualPaste": "Please paste manually",
+      "instruction": "Press Ctrl+V or ⌘+V"
+    },
+    "error": {
+      "manualPaste": "Please try manual paste",
+      "instruction": "Copy content first, then return to this page and press Ctrl+V or ⌘+V",
+      "retry": "Retry"
+    },
+    "content": {
+      "noData": "No data formats detected",
+      "empty": "Empty content",
+      "imageLabel": "Image",
+      "fileLabel": "File",
+      "imageAlt": "Clipboard image",
+      "viewBase64": "View Base64 data",
+      "viewFull": "View full content",
+      "characters": "characters",
+      "totalCharacters": "Total {count} characters"
+    },
+    "status": {
+      "detected": "Detected {count} MIME types"
+    },
+    "actions": {
+      "parse": "Parse Clipboard",
+      "parsing": "Parsing",
+      "reparse": "Re-parse"
+    }
+  }
+}
