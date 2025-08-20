@@ -10,12 +10,10 @@
   "header": {
     "backToHome": "返回首页"
   },
-
   "meta": {
     "title": "ts工具箱",
     "description": "基于TypeScript的实用工具集合，提供剪贴板解析、数据处理等功能"
   },
-
   "clipboard": {
     "title": "剪贴板 MIME 内容解析器",
     "description": "一次性解析并显示剪贴板中所有 MIME 类型的原始内容",

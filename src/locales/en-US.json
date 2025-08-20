@@ -10,12 +10,10 @@
   "header": {
     "backToHome": "Back to Home"
   },
-
   "meta": {
     "title": "ts Toolbox",
     "description": "TypeScript-based utility tools collection with clipboard parsing, data processing and more"
   },
-
   "clipboard": {
     "title": "Clipboard MIME Content Parser",
     "description": "Parse and display all MIME types from clipboard in raw format at once",

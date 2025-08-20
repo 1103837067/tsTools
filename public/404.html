@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ts Toolbox</title>
+    <script>
+        // GitHub Pages SPA 路由修复
+        // 将所有 404 路径重定向到 index.html，并保留路径信息
+        (function(l) {
+            if (l.search[1] === '/' ) {
+                var decoded = l.search.slice(1).split('&').map(function(s) { 
+                    return s.replace(/~and~/g, '&')
+                }).join('?');
+                window.history.replaceState(null, null,
+                    l.pathname.slice(0, -1) + decoded + l.hash
+                );
+            }
+        }(window.location))
+        
+        // 对于 GitHub Pages 子路径部署，重定向到正确的 base path
+        var segments = window.location.pathname.split('/').filter(Boolean);
+        var basePath = '/tsTools';
+        
+        // 如果当前路径不是以 basePath 开头，重定向到正确的路径
+        if (!window.location.pathname.startsWith(basePath)) {
+            var newPath = basePath + window.location.pathname;
+            window.location.replace(newPath);
+        } else {
+            // 否则重定向到 index.html 并保留路径信息
+            var pathSegmentsAfterBase = window.location.pathname.replace(basePath, '');
+            if (pathSegmentsAfterBase && pathSegmentsAfterBase !== '/') {
+                var redirectPath = basePath + '/?/' + pathSegmentsAfterBase.substring(1) + window.location.search + window.location.hash;
+                window.location.replace(redirectPath);
+            } else {
+                window.location.replace(basePath + '/');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+        <h1>Redirecting...</h1>
+        <p>If you are not redirected automatically, <a href="/tsTools/">click here</a>.</p>
+    </div>
+</body>
+</html>
