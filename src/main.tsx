@@ -16,7 +16,7 @@ import './styles.css';
 // GitHub Pages basepath
 const basepath =
   import.meta.env.PROD && window.location.hostname === '1103837067.github.io'
-    ? '/vite-react-tanstackRouter-shadcn-eslint-prettier-template'
+    ? '/tsTools'
     : '';
 
 // Create a new router instance
