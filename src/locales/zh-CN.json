@@ -107,5 +107,26 @@
       "securityAlt": "注意：由于浏览器安全限制，某些内容可能需要您手动粘贴（Ctrl+V 或 ⌘+V）。",
       "privacy": "此工具仅用于检测剪贴板内容，不会上传或存储您的数据。"
     }
+  },
+  "homepage": {
+    "title": "工具集",
+    "clipboardTool": {
+      "title": "剪贴板检测器", 
+      "description": "检测剪贴板中的文本、样式和隐藏数据"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "页面未找到",
+    "backHome": "返回首页"
+  },
+  "theme": {
+    "light": "亮色",
+    "dark": "暗色", 
+    "system": "跟随系统",
+    "toggle": "切换主题"
+  },
+  "accessibility": {
+    "scrollToTop": "滚动到顶部"
   }
 }

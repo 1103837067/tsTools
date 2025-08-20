@@ -107,5 +107,26 @@
       "securityAlt": "Note: Due to browser security restrictions, some content may require manual pasting (Ctrl+V or ⌘+V).",
       "privacy": "This tool is only used to detect clipboard content and will not upload or store your data."
     }
+  },
+  "homepage": {
+    "title": "Tools Collection",
+    "clipboardTool": {
+      "title": "Clipboard Detector",
+      "description": "Detect text, styles and hidden data in clipboard"
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Page not found",
+    "backHome": "Back to Home"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "Follow System", 
+    "toggle": "Toggle theme"
+  },
+  "accessibility": {
+    "scrollToTop": "Scroll to top"
   }
 }

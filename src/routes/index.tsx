@@ -18,15 +18,15 @@ function App() {
 
   return (
     <div className="container mx-auto py-16 text-center">
-      <h1 className="mb-8 text-4xl font-bold">工具集</h1>
+      <h1 className="mb-8 text-4xl font-bold">{t('homepage.title')}</h1>
       <div className="mx-auto grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
         <Link to="/clipboard-analyzer" className="block">
           <Button variant="outline" className="h-32 w-full flex-col gap-4">
             <Clipboard className="h-8 w-8" />
             <div>
-              <div className="text-lg font-medium">剪贴板检测器</div>
+              <div className="text-lg font-medium">{t('homepage.clipboardTool.title')}</div>
               <div className="text-xs text-muted-foreground">
-                检测剪贴板中的文本、样式和隐藏数据
+                {t('homepage.clipboardTool.description')}
               </div>
             </div>
           </Button>

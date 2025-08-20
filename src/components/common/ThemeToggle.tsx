@@ -5,6 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useTranslation } from '@/hooks/useTranslation';
 import { useTheme } from '@/lib/theme-context';
 import { Monitor, Moon, Sun } from 'lucide-react';
 import React from 'react';
@@ -15,6 +16,7 @@ import React from 'react';
  */
 export const ThemeToggle: React.FC = () => {
   const { theme, setTheme, actualTheme } = useTheme();
+  const { t } = useTranslation();
 
   /**
    * 获取当前主题对应的图标
@@ -36,17 +38,17 @@ export const ThemeToggle: React.FC = () => {
   const themeOptions = [
     {
       value: 'light' as const,
-      label: '亮色',
+      label: t('theme.light'),
       icon: <Sun className="mr-2 h-4 w-4" />,
     },
     {
       value: 'dark' as const,
-      label: '暗色',
+      label: t('theme.dark'),
       icon: <Moon className="mr-2 h-4 w-4" />,
     },
     {
       value: 'system' as const,
-      label: '跟随系统',
+      label: t('theme.system'),
       icon: <Monitor className="mr-2 h-4 w-4" />,
     },
   ];
@@ -58,7 +60,7 @@ export const ThemeToggle: React.FC = () => {
           variant="outline"
           size="icon"
           className="relative"
-          aria-label="切换主题"
+          aria-label={t('theme.toggle')}
         >
           {getCurrentIcon()}
         </Button>

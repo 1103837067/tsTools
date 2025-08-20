@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/hooks/useTranslation';
 import { ArrowUp } from 'lucide-react';
 import React, { useCallback, useEffect, useState } from 'react';
 
@@ -11,6 +12,7 @@ interface ScrollToTopProps {
  * 支持ScrollArea和普通window滚动
  */
 export const ScrollToTop: React.FC<ScrollToTopProps> = ({ scrollAreaRef }) => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   // 检查滚动位置的函数
@@ -88,7 +90,7 @@ export const ScrollToTop: React.FC<ScrollToTopProps> = ({ scrollAreaRef }) => {
       onClick={scrollToTop}
       size="icon"
       className="fixed bottom-6 right-6 z-40 shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-primary/90"
-      aria-label="滚动到顶部"
+      aria-label={t('accessibility.scrollToTop')}
     >
       <ArrowUp className="h-5 w-5" />
     </Button>
