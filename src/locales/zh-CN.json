@@ -10,50 +10,12 @@
   "header": {
     "backToHome": "返回首页"
   },
-  "navigation": {
-    "home": "首页",
-    "about": "关于",
-    "contact": "联系我们"
-  },
+
   "meta": {
     "title": "ts工具箱",
     "description": "基于TypeScript的实用工具集合，提供剪贴板解析、数据处理等功能"
   },
-  "home": {
-    "welcome": "React + TypeScript 模板",
-    "description": "现代化的React应用程序模板，集成主题切换、多语言支持和最佳实践",
-    "githubRepo": "GitHub 仓库",
-    "quickStart": "快速开始",
-    "cloneRepo": "克隆仓库",
-    "installDeps": "安装依赖",
-    "startDev": "启动开发",
-    "startBuilding": "开始构建",
-    "editFile": "编辑",
-    "startProject": "开始您的项目！",
-    "copyright": "© 2024 1103837067 - MIT 许可证",
-    "themeToggle": "主题切换功能",
-    "currentTheme": "当前主题设置:",
-    "actualTheme": "实际应用主题:",
-    "lightMode": "亮色",
-    "darkMode": "暗色",
-    "systemMode": "跟随系统",
-    "lightModeActive": "亮色模式",
-    "darkModeActive": "暗色模式",
-    "learnReact": "学习 React",
-    "learnTanStack": "学习 TanStack",
-    "learnShadcn": "学习 shadcn/ui",
-    "projectFeatures": "项目特性",
-    "features": {
-      "themeSystem": "主题系统",
-      "themeSystemDesc": "支持亮色、暗色和跟随系统三种模式",
-      "responsive": "响应式设计",
-      "responsiveDesc": "在桌面和移动设备上都有出色体验",
-      "modernStack": "现代技术栈",
-      "modernStackDesc": "React 19、TypeScript、TanStack Router",
-      "i18n": "多语言支持",
-      "i18nDesc": "支持中文简体和英文切换"
-    }
-  },
+
   "clipboard": {
     "title": "剪贴板 MIME 内容解析器",
     "description": "一次性解析并显示剪贴板中所有 MIME 类型的原始内容",
