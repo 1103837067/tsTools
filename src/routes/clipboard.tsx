@@ -12,20 +12,20 @@ function ClipboardPage() {
 
   // 根据当前语言设置页面标题
   useEffect(() => {
-    document.title = t('剪贴板检测器');
+    document.title = t('clipboardPage.pageTitle');
   }, [t]);
 
   return (
     <div className="container mx-auto max-w-4xl py-8">
-      <h1 className="mb-8 text-center text-3xl font-bold">剪贴板内容检测器</h1>
+      <h1 className="mb-8 text-center text-3xl font-bold">{t('clipboardPage.title')}</h1>
 
       <div className="mb-8 rounded-lg border bg-card p-6">
-        <h2 className="mb-4 text-xl font-semibold">使用说明</h2>
+        <h2 className="mb-4 text-xl font-semibold">{t('clipboardPage.instructions.title')}</h2>
         <ol className="list-decimal space-y-2 pl-5">
-          <li>复制任何内容到您的剪贴板（文本、HTML、图片等）</li>
-          <li>点击下方"检测剪贴板"按钮</li>
-          <li>在弹出的权限请求中，允许网站访问剪贴板（如果有）</li>
-          <li>查看解析后的剪贴板内容，包括各种格式</li>
+          <li>{t('clipboardPage.instructions.step1')}</li>
+          <li>{t('clipboardPage.instructions.step2')}</li>
+          <li>{t('clipboardPage.instructions.step3')}</li>
+          <li>{t('clipboardPage.instructions.step4')}</li>
         </ol>
       </div>
 
@@ -33,8 +33,8 @@ function ClipboardPage() {
 
       <div className="mt-8 text-center text-sm text-muted-foreground">
         <p>
-          注意：由于浏览器安全限制，某些内容可能无法完全访问。
-          此工具仅用于检测剪贴板内容，不会上传或存储您的数据。
+          {t('clipboardPage.notice.security')}{' '}
+          {t('clipboardPage.notice.privacy')}
         </p>
       </div>
     </div>

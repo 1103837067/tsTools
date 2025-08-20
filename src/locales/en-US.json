@@ -90,5 +90,22 @@
       "parsing": "Parsing",
       "reparse": "Re-parse"
     }
+  },
+  "clipboardPage": {
+    "title": "Clipboard Content Detector",
+    "pageTitle": "Clipboard Detector",
+    "instructions": {
+      "title": "Usage Instructions",
+      "step1": "Copy any content to your clipboard (text, HTML, images, etc.)",
+      "step2": "Click the \"Parse Clipboard\" button below",
+      "step3": "Allow website access to clipboard in the permission popup (if any)",
+      "step3alt": "Or directly press Ctrl+V to paste content",
+      "step4": "View the parsed clipboard content in various formats"
+    },
+    "notice": {
+      "security": "Note: Due to browser security restrictions, some content may not be fully accessible.",
+      "securityAlt": "Note: Due to browser security restrictions, some content may require manual pasting (Ctrl+V or ⌘+V).",
+      "privacy": "This tool is only used to detect clipboard content and will not upload or store your data."
+    }
   }
 }
