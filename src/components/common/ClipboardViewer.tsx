@@ -145,9 +145,9 @@ export function ClipboardViewer({
                 {(item as any).isImage && item.data.startsWith('data:image') ? (
                   <div className="space-y-2">
                     <div className="flex justify-center">
-                                            <img 
-                        src={item.data} 
-                        alt={t('clipboard.content.imageAlt')} 
+                                            <img
+                        src={item.data}
+                        alt={t('clipboard.content.imageAlt')}
                         className="max-h-48 max-w-full rounded border object-contain"
                         onError={(e) => {
                           console.error('图片加载失败:', e);

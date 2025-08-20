@@ -7,7 +7,7 @@ import { resolve } from 'node:path';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
-  // GitHub Pages base path  
+  // GitHub Pages base path
   const base =
     mode === 'production' && process.env.GITHUB_PAGES
       ? '/tsTools/'  // 使用实际的仓库名
