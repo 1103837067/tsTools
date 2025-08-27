@@ -16,10 +16,9 @@ import {
   ClipboardCheck,
   ClipboardList,
   Copy,
-  KeyRound,
   Loader2,
 } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { EditableContent } from './EditableContent';
 
 export interface ClipboardViewerProps
@@ -34,31 +33,51 @@ export function ClipboardViewer({
 }: ClipboardViewerProps) {
   const { clipboardData, isLoading, error, readClipboard } = useClipboard();
   const { t } = useTranslation();
-  const [showManualInstructions, setShowManualInstructions] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  // 管理所有编辑后的内容
+  const [editedContents, setEditedContents] = useState<Record<number, string>>({});
 
   const handleCapture = async () => {
-    setShowManualInstructions(true);
     await readClipboard();
+    // 重置编辑内容
+    setEditedContents({});
+  };
+
+  // 更新特定索引的编辑内容
+  const updateEditedContent = (index: number, content: string) => {
+    setEditedContents(prev => ({
+      ...prev,
+      [index]: content
+    }));
+  };
+
+  // 获取编辑后的内容，如果没有编辑则返回原始内容
+  const getEditedContent = (index: number, originalContent: string) => {
+    return editedContents[index] ?? originalContent;
   };
 
   const handleCopyAllTypes = async () => {
     if (!clipboardData || !clipboardData.items.length) return;
 
     try {
-      // 构建包含所有类型的 ClipboardItem
+      // 构建包含所有编辑后类型的 ClipboardItem
       const clipboardItems: Record<string, Blob> = {};
       
-      for (const item of clipboardData.items) {
+      for (let index = 0; index < clipboardData.items.length; index++) {
+        const item = clipboardData.items[index];
+        // 获取编辑后的内容
+        const editedContent = getEditedContent(index, item.data);
+        
         try {
-          if (item.type.startsWith('image/') && item.data.startsWith('data:')) {
-            // 处理图片类型
-            const response = await fetch(item.data);
+          if (item.type.startsWith('image/') && editedContent.startsWith('data:')) {
+            // 处理编辑后的图片类型
+            const response = await fetch(editedContent);
             const blob = await response.blob();
             clipboardItems[item.type] = blob;
           } else {
-            // 处理其他类型
-            const blob = new Blob([item.data], { type: item.type });
+            // 处理编辑后的其他类型
+            const blob = new Blob([editedContent], { type: item.type });
             clipboardItems[item.type] = blob;
           }
         } catch (err) {
@@ -69,9 +88,8 @@ export function ClipboardViewer({
       if (Object.keys(clipboardItems).length > 0) {
         const clipboardItem = new ClipboardItem(clipboardItems);
         await navigator.clipboard.write([clipboardItem]);
-        toast.success(t('clipboard.actions.copyAllSuccess', { 
-          count: Object.keys(clipboardItems).length 
-        }));
+        const itemCount = Object.keys(clipboardItems).length;
+        toast.success(t('clipboard.actions.copyAllSuccess', { count: itemCount }));
       } else {
         throw new Error('没有可复制的类型');
       }
@@ -81,21 +99,7 @@ export function ClipboardViewer({
     }
   };
 
-  // 在loading状态持续1.5秒后显示手动指导
-  useEffect(() => {
-    let timer: number;
-    if (isLoading) {
-      timer = window.setTimeout(() => {
-        setShowManualInstructions(true);
-      }, 1500);
-    } else {
-      setShowManualInstructions(false);
-    }
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [isLoading]);
 
   const renderContent = () => {
     if (isLoading) {
@@ -106,17 +110,7 @@ export function ClipboardViewer({
             {t('clipboard.loading.title')}
           </p>
 
-          {showManualInstructions && (
-            <div className="mt-4 max-w-sm rounded-lg border bg-card/50 p-3 text-center shadow-sm">
-              <p className="text-sm font-medium">{t('clipboard.loading.manualPaste')}</p>
-              <div className="mt-2 flex items-center justify-center gap-1 text-xs text-muted-foreground">
-                <KeyRound className="h-3 w-3" />
-                <span>
-                  {t('clipboard.loading.instruction')}
-                </span>
-              </div>
-            </div>
-          )}
+
         </div>
       );
     }
@@ -125,14 +119,6 @@ export function ClipboardViewer({
       return (
         <div className="flex flex-col items-center justify-center py-8">
           <p className="text-sm text-destructive">{error}</p>
-          <div className="mt-4 max-w-sm rounded-lg border bg-card/50 p-3 text-center shadow-sm">
-            <p className="text-sm font-medium">{t('clipboard.error.manualPaste')}</p>
-            <div className="mt-2 flex items-center justify-center gap-1 text-xs text-muted-foreground">
-              <span>
-                {t('clipboard.error.instruction')}
-              </span>
-            </div>
-          </div>
           <Button variant="outline" className="mt-4" onClick={handleCapture}>
             {t('clipboard.error.retry')}
           </Button>
@@ -162,33 +148,35 @@ export function ClipboardViewer({
         ) : (
           clipboardData.items.map((item, index) => (
             <div key={index} className="rounded-md border bg-card">
-              <div className="flex items-center justify-between border-b bg-muted/50 px-4 py-2">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium text-sm">{item.type}</span>
+              <div className="flex items-center justify-between border-b bg-muted/50 px-3 sm:px-4 py-2">
+                <div className="flex items-center gap-1 sm:gap-2 min-w-0 flex-1">
+                  <span className="font-medium text-xs sm:text-sm truncate">{item.type}</span>
                   {(item as any).isImage && (
-                    <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800 dark:bg-green-800 dark:text-green-100">
+                    <span className="inline-flex items-center rounded-full bg-green-100 px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs font-medium text-green-800 dark:bg-green-800 dark:text-green-100 shrink-0">
                       {t('clipboard.content.imageLabel')}
                     </span>
                   )}
                   {(item as any).isFile && (
-                    <span className="inline-flex items-center rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800 dark:bg-blue-800 dark:text-blue-100">
+                    <span className="inline-flex items-center rounded-full bg-blue-100 px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs font-medium text-blue-800 dark:bg-blue-800 dark:text-blue-100 shrink-0">
                       {t('clipboard.content.fileLabel')}
                     </span>
                   )}
                 </div>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   {(item as any).size && (
-                    <span>{((item as any).size / 1024).toFixed(1)} KB</span>
+                    <span className="hidden sm:inline">{((item as any).size / 1024).toFixed(1)} KB</span>
                   )}
-                  <span>{item.data.length} {t('clipboard.content.characters')}</span>
+                  <span className="hidden sm:inline">{getEditedContent(index, item.data).length} {t('clipboard.content.characters')}</span>
+                  <span className="sm:hidden">{getEditedContent(index, item.data).length}</span>
                 </div>
               </div>
-                            <div className="p-4">
+                            <div className="p-3 sm:p-4">
                 <EditableContent
                   content={item.data}
-                  type={item.type}
                   isImage={(item as any).isImage}
-                  isFile={(item as any).isFile}
+                  index={index}
+                  onContentChange={updateEditedContent}
+                  getEditedContent={(content) => getEditedContent(index, content)}
                 />
               </div>
             </div>

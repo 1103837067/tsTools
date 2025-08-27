@@ -52,10 +52,10 @@ export function useClipboard() {
       // 首先尝试使用现代的 clipboard.read() API 来获取所有数据
       try {
         const clipboardItems = await navigator.clipboard.read();
-        console.log('获取到剪贴板项目:', clipboardItems);
+
 
         for (const clipboardItem of clipboardItems) {
-          console.log('剪贴板项目类型:', clipboardItem.types);
+
 
           for (const type of clipboardItem.types) {
             try {
@@ -128,7 +128,7 @@ export function useClipboard() {
 
       // 设置超时处理
       const timeoutId = setTimeout(() => {
-        console.log('剪贴板操作超时，尝试使用备用方法');
+
         // 如果有文本数据，至少返回这部分内容
         if (result.text || result.items.length > 0) {
           setClipboardData(result);
@@ -227,16 +227,16 @@ export function useClipboard() {
       document.addEventListener('paste', handlePaste);
 
       // 提示用户手动粘贴
-      console.log('请按 Ctrl+V 或 Cmd+V 粘贴内容');
+      
 
       // 尝试执行粘贴命令 (注意：此方法在许多现代浏览器中已被弃用)
       try {
         const success = document.execCommand('paste');
         if (!success) {
-          console.log('自动粘贴失败，请手动按 Ctrl+V/Cmd+V');
+
         }
       } catch (e) {
-        console.warn("execCommand('paste') 失败:", e);
+
       }
 
     } catch (err) {

@@ -22,13 +22,9 @@
       "subtitle": "First copy the content you want to parse, then click the button below"
     },
     "loading": {
-      "title": "Reading clipboard content...",
-      "manualPaste": "Please paste manually",
-      "instruction": "Press Ctrl+V or ⌘+V"
+      "title": "Reading clipboard content..."
     },
     "error": {
-      "manualPaste": "Please try manual paste",
-      "instruction": "Copy content first, then return to this page and press Ctrl+V or ⌘+V",
       "retry": "Retry"
     },
     "content": {
@@ -40,39 +36,27 @@
       "viewBase64": "View Base64 data",
       "viewFull": "View full content",
       "characters": "characters",
-      "totalCharacters": "Total {count} characters"
+      "totalCharacters": "Total {{count}} characters"
     },
     "status": {
-      "detected": "Detected {count} MIME types"
+      "detected": "Detected {{count}} MIME types"
     },
     "actions": {
       "parse": "Parse Clipboard",
       "parsing": "Parsing",
       "reparse": "Re-parse",
-      "copyAll": "Copy All Types",
-      "copyAllSuccess": "Copied {count} types to clipboard",
+      "copyAll": "Copy All Edited Content",
+      "copyAllSuccess": "Copied {{count}} edited types to clipboard",
       "copyAllError": "Copy failed, please copy manually"
     },
     "edit": {
-      "copy": "Copy",
-      "placeholder": "Edit content here...",
-      "copied": "Copied",
-      "copiedAsImage": "Copied as image",
-      "copiedWithType": "Copied as {type}",
-      "copyError": "Copy failed"
+      "placeholder": "Edit content here..."
     }
   },
   "clipboardPage": {
     "title": "Clipboard Content Detector",
     "pageTitle": "Clipboard Detector - ts Toolbox",
-    "instructions": {
-      "title": "Usage Instructions",
-      "step1": "Copy any content to your clipboard (text, HTML, images, etc.)",
-      "step2": "Click the \"Parse Clipboard\" button below",
-      "step3": "Allow website access to clipboard in the permission popup (if any)",
-      "step3alt": "Or directly press Ctrl+V to paste content",
-      "step4": "View the parsed clipboard content in various formats"
-    },
+
     "notice": {
       "security": "Note: Due to browser security restrictions, some content may not be fully accessible.",
       "securityAlt": "Note: Due to browser security restrictions, some content may require manual pasting (Ctrl+V or ⌘+V).",

@@ -19,15 +19,7 @@ function ClipboardPage() {
     <div className="container mx-auto max-w-4xl py-8">
       <h1 className="mb-8 text-center text-3xl font-bold">{t('clipboardPage.title')}</h1>
 
-      <div className="mb-8 rounded-lg border bg-card p-6">
-        <h2 className="mb-4 text-xl font-semibold">{t('clipboardPage.instructions.title')}</h2>
-        <ol className="list-decimal space-y-2 pl-5">
-          <li>{t('clipboardPage.instructions.step1')}</li>
-          <li>{t('clipboardPage.instructions.step2')}</li>
-          <li>{t('clipboardPage.instructions.step3')}</li>
-          <li>{t('clipboardPage.instructions.step4')}</li>
-        </ol>
-      </div>
+
 
       <ClipboardViewer />
 

@@ -22,13 +22,9 @@
       "subtitle": "首先复制您想要解析的内容，然后点击下方按钮"
     },
     "loading": {
-      "title": "正在读取剪贴板内容...",
-      "manualPaste": "请手动粘贴内容",
-      "instruction": "按下 Ctrl+V 或 ⌘+V"
+      "title": "正在读取剪贴板内容..."
     },
     "error": {
-      "manualPaste": "请尝试手动粘贴",
-      "instruction": "先复制内容，然后回到此页面按 Ctrl+V 或 ⌘+V",
       "retry": "重试"
     },
     "content": {
@@ -40,39 +36,27 @@
       "viewBase64": "查看 Base64 数据",
       "viewFull": "查看完整内容",
       "characters": "字符",
-      "totalCharacters": "共 {count} 字符"
+      "totalCharacters": "共 {{count}} 字符"
     },
     "status": {
-      "detected": "检测到 {count} 种 MIME 类型"
+      "detected": "检测到 {{count}} 种 MIME 类型"
     },
     "actions": {
       "parse": "解析剪贴板",
       "parsing": "解析中",
       "reparse": "重新解析",
-      "copyAll": "复制所有类型",
-      "copyAllSuccess": "已复制 {count} 种类型到剪贴板",
+      "copyAll": "一键复制所有编辑内容",
+      "copyAllSuccess": "已复制 {{count}} 种编辑后的类型到剪贴板",
       "copyAllError": "复制失败，请手动复制"
     },
     "edit": {
-      "copy": "复制",
-      "placeholder": "在此编辑内容...",
-      "copied": "已复制",
-      "copiedAsImage": "已复制为图片",
-      "copiedWithType": "已复制为 {type}",
-      "copyError": "复制失败"
+      "placeholder": "在此编辑内容..."
     }
   },
   "clipboardPage": {
     "title": "剪贴板内容检测器",
     "pageTitle": "剪贴板检测器 - ts工具箱",
-    "instructions": {
-      "title": "使用说明",
-      "step1": "复制任何内容到您的剪贴板（文本、HTML、图片等）",
-      "step2": "点击下方\"检测剪贴板\"按钮",
-      "step3": "在弹出的权限请求中，允许网站访问剪贴板（如果有）",
-      "step3alt": "或直接按 Ctrl+V 粘贴内容",
-      "step4": "查看解析后的剪贴板内容，包括各种格式"
-    },
+
     "notice": {
       "security": "注意：由于浏览器安全限制，某些内容可能无法完全访问。",
       "securityAlt": "注意：由于浏览器安全限制，某些内容可能需要您手动粘贴（Ctrl+V 或 ⌘+V）。",
