@@ -8,12 +8,14 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { useClipboard } from '@/hooks/useClipboard';
+import { toast } from '@/hooks/useToast';
 import { useTranslation } from '@/hooks/useTranslation';
 import { cn } from '@/lib/utils';
 import {
   Clipboard,
   ClipboardCheck,
   ClipboardList,
+  Copy,
   KeyRound,
   Loader2,
 } from 'lucide-react';
@@ -38,6 +40,45 @@ export function ClipboardViewer({
   const handleCapture = async () => {
     setShowManualInstructions(true);
     await readClipboard();
+  };
+
+  const handleCopyAllTypes = async () => {
+    if (!clipboardData || !clipboardData.items.length) return;
+
+    try {
+      // 构建包含所有类型的 ClipboardItem
+      const clipboardItems: Record<string, Blob> = {};
+      
+      for (const item of clipboardData.items) {
+        try {
+          if (item.type.startsWith('image/') && item.data.startsWith('data:')) {
+            // 处理图片类型
+            const response = await fetch(item.data);
+            const blob = await response.blob();
+            clipboardItems[item.type] = blob;
+          } else {
+            // 处理其他类型
+            const blob = new Blob([item.data], { type: item.type });
+            clipboardItems[item.type] = blob;
+          }
+        } catch (err) {
+          console.warn(`无法处理类型 ${item.type}:`, err);
+        }
+      }
+
+      if (Object.keys(clipboardItems).length > 0) {
+        const clipboardItem = new ClipboardItem(clipboardItems);
+        await navigator.clipboard.write([clipboardItem]);
+        toast.success(t('clipboard.actions.copyAllSuccess', { 
+          count: Object.keys(clipboardItems).length 
+        }));
+      } else {
+        throw new Error('没有可复制的类型');
+      }
+    } catch (err) {
+      console.error('复制所有类型失败:', err);
+      toast.error(t('clipboard.actions.copyAllError'));
+    }
   };
 
   // 在loading状态持续1.5秒后显示手动指导
@@ -189,28 +230,40 @@ export function ClipboardViewer({
             </>
           )}
         </div>
-        <Button
-          onClick={handleCapture}
-          disabled={isLoading}
-          className="ml-auto"
-        >
-          {isLoading ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              {t('clipboard.actions.parsing')}
-            </>
-          ) : clipboardData ? (
-            <>
-              <ClipboardCheck className="mr-2 h-4 w-4" />
-              {t('clipboard.actions.reparse')}
-            </>
-          ) : (
-            <>
-              <Clipboard className="mr-2 h-4 w-4" />
-              {t('clipboard.actions.parse')}
-            </>
+        <div className="flex gap-2">
+          {clipboardData && clipboardData.items.length > 0 && (
+            <Button
+              variant="outline"
+              onClick={handleCopyAllTypes}
+              disabled={isLoading}
+              className="gap-2"
+            >
+              <Copy className="h-4 w-4" />
+              {t('clipboard.actions.copyAll')}
+            </Button>
           )}
-        </Button>
+          <Button
+            onClick={handleCapture}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                {t('clipboard.actions.parsing')}
+              </>
+            ) : clipboardData ? (
+              <>
+                <ClipboardCheck className="mr-2 h-4 w-4" />
+                {t('clipboard.actions.reparse')}
+              </>
+            ) : (
+              <>
+                <Clipboard className="mr-2 h-4 w-4" />
+                {t('clipboard.actions.parse')}
+              </>
+            )}
+          </Button>
+        </div>
       </CardFooter>
     </Card>
   );

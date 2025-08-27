@@ -48,25 +48,18 @@
     "actions": {
       "parse": "解析剪贴板",
       "parsing": "解析中",
-      "reparse": "重新解析"
+      "reparse": "重新解析",
+      "copyAll": "复制所有类型",
+      "copyAllSuccess": "已复制 {count} 种类型到剪贴板",
+      "copyAllError": "复制失败，请手动复制"
     },
     "edit": {
-      "edit": "编辑",
-      "save": "保存",
-      "cancel": "取消",
       "copy": "复制",
-      "copyBase64": "复制Base64",
       "placeholder": "在此编辑内容...",
-      "showMore": "显示更多",
-      "showLess": "显示更少",
-      "showContent": "显示完整内容",
-      "hideContent": "隐藏内容",
-      "saved": "已保存",
-      "savedDesc": "内容编辑已保存",
       "copied": "已复制",
-      "copiedDesc": "内容已复制到剪贴板",
-      "copyError": "复制失败",
-      "copyErrorDesc": "无法复制到剪贴板，请手动选择复制"
+      "copiedAsImage": "已复制为图片",
+      "copiedWithType": "已复制为 {type}",
+      "copyError": "复制失败"
     }
   },
   "clipboardPage": {
