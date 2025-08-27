@@ -18,6 +18,7 @@ import {
   Loader2,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { EditableContent } from './EditableContent';
 
 export interface ClipboardViewerProps
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -141,47 +142,13 @@ export function ClipboardViewer({
                   <span>{item.data.length} {t('clipboard.content.characters')}</span>
                 </div>
               </div>
-              <div className="p-4">
-                {(item as any).isImage && item.data.startsWith('data:image') ? (
-                  <div className="space-y-2">
-                    <div className="flex justify-center">
-                                            <img
-                        src={item.data}
-                        alt={t('clipboard.content.imageAlt')}
-                        className="max-h-48 max-w-full rounded border object-contain"
-                        onError={(e) => {
-                          console.error('图片加载失败:', e);
-                        }}
-                      />
-                    </div>
-                    <details className="mt-2">
-                      <summary className="cursor-pointer text-sm text-muted-foreground hover:text-foreground">
-                        {t('clipboard.content.viewBase64')} ({item.data.length} {t('clipboard.content.characters')})
-                      </summary>
-                      <pre className="mt-2 overflow-x-auto whitespace-pre-wrap text-xs leading-relaxed bg-muted/50 p-2 rounded">
-                        {item.data}
-                      </pre>
-                    </details>
-                  </div>
-                ) : item.data.length > 1000 ? (
-                  <div className="space-y-2">
-                    <pre className="overflow-x-auto whitespace-pre-wrap text-xs leading-relaxed">
-                      {item.data.substring(0, 1000)}...
-                    </pre>
-                    <details>
-                      <summary className="cursor-pointer text-sm text-muted-foreground hover:text-foreground">
-                        {t('clipboard.content.viewFull')} ({t('clipboard.content.totalCharacters', { count: item.data.length })})
-                      </summary>
-                      <pre className="mt-2 overflow-x-auto whitespace-pre-wrap text-xs leading-relaxed bg-muted/50 p-2 rounded">
-                        {item.data}
-                      </pre>
-                    </details>
-                  </div>
-                ) : (
-                  <pre className="overflow-x-auto whitespace-pre-wrap text-xs leading-relaxed">
-                    {item.data || <span className="text-muted-foreground">{t('clipboard.content.empty')}</span>}
-                  </pre>
-                )}
+                            <div className="p-4">
+                <EditableContent
+                  content={item.data}
+                  type={item.type}
+                  isImage={(item as any).isImage}
+                  isFile={(item as any).isFile}
+                />
               </div>
             </div>
           ))

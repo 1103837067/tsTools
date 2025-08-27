@@ -49,6 +49,24 @@
       "parse": "Parse Clipboard",
       "parsing": "Parsing",
       "reparse": "Re-parse"
+    },
+    "edit": {
+      "edit": "Edit",
+      "save": "Save",
+      "cancel": "Cancel",
+      "copy": "Copy",
+      "copyBase64": "Copy Base64",
+      "placeholder": "Edit content here...",
+      "showMore": "Show more",
+      "showLess": "Show less",
+      "showContent": "Show full content",
+      "hideContent": "Hide content",
+      "saved": "Saved",
+      "savedDesc": "Content edits have been saved",
+      "copied": "Copied",
+      "copiedDesc": "Content copied to clipboard",
+      "copyError": "Copy failed",
+      "copyErrorDesc": "Unable to copy to clipboard, please copy manually"
     }
   },
   "clipboardPage": {
